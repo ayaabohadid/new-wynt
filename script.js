@@ -37,23 +37,28 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// File drop preview: reflect filename when selected
+// File drop: reflect filename + drag/drop
 const fileInput = document.getElementById('cv-file');
-const fileLabel = document.querySelector('.file-drop span');
-if (fileInput && fileLabel) {
-  const defaultText = fileLabel.innerHTML;
+const fileText = document.querySelector('.file-text');
+if (fileInput && fileText) {
+  const defaultHTML = fileText.innerHTML;
   fileInput.addEventListener('change', () => {
     const file = fileInput.files && fileInput.files[0];
-    fileLabel.innerHTML = file ? `Selected: <u>${file.name}</u>` : defaultText;
+    if (file) {
+      const kb = Math.round(file.size / 1024);
+      fileText.innerHTML = `<strong>${file.name}</strong><span>${kb.toLocaleString()} KB · ready to submit</span>`;
+    } else {
+      fileText.innerHTML = defaultHTML;
+    }
   });
 
   const drop = fileInput.closest('.file-drop');
   if (drop) {
     ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => {
-      e.preventDefault(); drop.style.background = '#f5f5ff';
+      e.preventDefault(); drop.style.background = '#efefff'; drop.style.borderColor = '#6366f1';
     }));
     ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => {
-      e.preventDefault(); drop.style.background = '';
+      e.preventDefault(); drop.style.background = ''; drop.style.borderColor = '';
     }));
     drop.addEventListener('drop', e => {
       const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
@@ -65,20 +70,23 @@ if (fileInput && fileLabel) {
   }
 }
 
-// Subtle parallax on hero cards
-const cardScore = document.querySelector('.card-score');
-const cardMatch = document.querySelector('.card-match');
-const heroVisual = document.querySelector('.hero-visual');
-if (heroVisual && cardScore && cardMatch && !matchMedia('(pointer: coarse)').matches) {
-  heroVisual.addEventListener('mousemove', (e) => {
-    const rect = heroVisual.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    cardScore.style.transform = `rotate(${-1.2 + x * 1.2}deg) translate(${x * 8}px, ${y * 8}px)`;
-    cardMatch.style.transform = `rotate(${2.2 + x * -1.2}deg) translate(${x * -10}px, ${y * -6}px)`;
-  });
-  heroVisual.addEventListener('mouseleave', () => {
-    cardScore.style.transform = '';
-    cardMatch.style.transform = '';
-  });
-}
+// Submission flow (client-side simulation)
+window.__wyntSubmit = function (event) {
+  event.preventDefault();
+  const status = document.getElementById('submit-status');
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const file = fileInput && fileInput.files && fileInput.files[0];
+  if (!file) {
+    status.textContent = 'Please attach your resume to continue.';
+    status.className = 'submit-status err';
+    return false;
+  }
+  status.textContent = 'Uploading and analyzing with AI…';
+  status.className = 'submit-status';
+  setTimeout(() => {
+    status.innerHTML = `Thanks, ${name.split(' ')[0] || 'there'}! Your AI review is on its way to <b>${email}</b>.`;
+    status.className = 'submit-status ok';
+  }, 1400);
+  return false;
+};

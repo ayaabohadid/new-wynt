@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Wynt — Land your next role faster. AI-powered CV analysis, ATS scoring, tailored feedback, and instant job matches for candidates." />
-  <title>Wynt — Your AI Career Companion</title>
+  <meta name="description" content="Upload your resume and let Wynt's AI match you with the right opportunities. Personalized feedback, instant matches, free for candidates." />
+  <title>Wynt — Upload Your Resume, Let AI Do the Work</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -35,15 +35,14 @@
       </a>
 
       <nav class="nav-links" aria-label="Primary">
-        <a href="#features">Features</a>
         <a href="#how">How it works</a>
-        <a href="#stories">Stories</a>
+        <a href="#benefits">Why Wynt</a>
         <a href="#faq">FAQ</a>
+        <a href="https://wynt.ai" target="_blank" rel="noopener">For employers</a>
       </nav>
 
       <div class="nav-cta">
-        <a href="#" class="btn btn-ghost">Sign in</a>
-        <a href="#upload" class="btn btn-primary">Get started</a>
+        <a href="#submit" class="btn btn-primary">Upload resume</a>
       </div>
 
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -51,12 +50,11 @@
       </button>
     </div>
     <div class="mobile-menu" hidden>
-      <a href="#features">Features</a>
       <a href="#how">How it works</a>
-      <a href="#stories">Stories</a>
+      <a href="#benefits">Why Wynt</a>
       <a href="#faq">FAQ</a>
-      <a href="#" class="btn btn-ghost">Sign in</a>
-      <a href="#upload" class="btn btn-primary">Get started</a>
+      <a href="https://wynt.ai" target="_blank" rel="noopener">For employers</a>
+      <a href="#submit" class="btn btn-primary">Upload resume</a>
     </div>
   </header>
 
@@ -65,230 +63,163 @@
       <div class="container hero-inner">
         <div class="hero-copy reveal">
           <span class="eyebrow">
-            <span class="dot"></span> AI for candidates · Free to start
+            <span class="dot"></span> Free for candidates · No sign-up required
           </span>
           <h1 class="display">
-            Land your next role, <span class="grad-text">faster</span>.
+            Upload your resume.<br />
+            <span class="grad-text">Let AI do the work.</span>
           </h1>
           <p class="lede">
-            Upload your CV and let Wynt's AI score it against the roles you want, fix what's holding you back, and match you with companies hiring right now.
+            Submit your resume to Wynt and our AI will review it, suggest improvements, and match you with relevant opportunities — instantly.
           </p>
+          <ul class="hero-points">
+            <li><span class="tick">✓</span> Instant AI review with personalized feedback</li>
+            <li><span class="tick">✓</span> Matched with companies hiring right now</li>
+            <li><span class="tick">✓</span> Your data stays private — always</li>
+          </ul>
+        </div>
 
-          <form class="hero-form" id="upload" onsubmit="event.preventDefault(); document.getElementById('upload-status').textContent='CV received — analyzing…'; setTimeout(()=>{document.getElementById('upload-status').textContent='Score ready: 87 / 100. We emailed your report.';}, 1400);">
-            <label class="file-drop" for="cv-file">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              <span>Drop your CV or <u>browse</u></span>
-              <input id="cv-file" type="file" accept=".pdf,.doc,.docx" hidden />
-            </label>
-            <button class="btn btn-primary btn-lg" type="submit">Analyze for free</button>
+        <aside class="submit-card reveal" id="submit">
+          <form class="submit-form" onsubmit="return window.__wyntSubmit(event)">
+            <header class="submit-head">
+              <h2>Submit your resume</h2>
+              <p>Takes under a minute. We'll email your AI review and matched roles.</p>
+            </header>
+
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="field">
+              <label>Resume</label>
+              <label class="file-drop" for="cv-file">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <div class="file-text">
+                  <strong>Drop your resume here</strong>
+                  <span>or <u>browse files</u> · PDF, DOC, DOCX · max 10MB</span>
+                </div>
+                <input id="cv-file" type="file" accept=".pdf,.doc,.docx" hidden required />
+              </label>
+            </div>
+
+            <div class="field checkbox">
+              <label>
+                <input type="checkbox" required />
+                <span>I agree to Wynt's <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+              Submit resume
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+
+            <p class="submit-status" id="submit-status" role="status" aria-live="polite"></p>
           </form>
-          <p class="form-hint" id="upload-status">PDF, DOC, or DOCX · Your data stays private.</p>
-
-          <div class="logos">
-            <span class="logos-label">Trusted by candidates hired at</span>
-            <div class="logos-row">
-              <span>Stripe</span><span>Linear</span><span>Figma</span><span>Shopify</span><span>Notion</span><span>Airbnb</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-visual reveal">
-          <div class="card card-score">
-            <div class="card-head">
-              <div class="avatar">AY</div>
-              <div>
-                <div class="card-title">Aya · Product Designer</div>
-                <div class="card-sub">CV analysis · v2.4</div>
-              </div>
-              <span class="pill pill-live">● live</span>
-            </div>
-
-            <div class="score-ring">
-              <svg viewBox="0 0 120 120" width="140" height="140">
-                <circle cx="60" cy="60" r="52" stroke="#eef2ff" stroke-width="12" fill="none"/>
-                <circle cx="60" cy="60" r="52" stroke="url(#ring)" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="326" stroke-dashoffset="42" transform="rotate(-90 60 60)"/>
-                <defs>
-                  <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#6366f1"/>
-                    <stop offset="1" stop-color="#a855f7"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div class="score-value">
-                <strong>87</strong>
-                <span>match score</span>
-              </div>
-            </div>
-
-            <ul class="score-breakdown">
-              <li><span>Skills alignment</span><b>94%</b></li>
-              <li><span>Experience fit</span><b>88%</b></li>
-              <li><span>ATS readability</span><b>79%</b></li>
-            </ul>
-
-            <div class="suggestions">
-              <div class="suggestion">
-                <span class="check">✓</span>
-                <p>Great: quantified impact on 4 of your last 5 roles.</p>
-              </div>
-              <div class="suggestion warn">
-                <span class="check">!</span>
-                <p>Add "design systems" and "Figma variables" — missing for 12 open roles.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card card-match floaty">
-            <div class="match-head">
-              <span class="pill pill-green">New match</span>
-              <span class="match-time">2m ago</span>
-            </div>
-            <div class="match-body">
-              <div class="match-logo">L</div>
-              <div>
-                <div class="match-role">Senior Product Designer</div>
-                <div class="match-co">Linear · Remote · $140k–$180k</div>
-              </div>
-              <div class="match-score">92</div>
-            </div>
-          </div>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <section class="metrics">
-      <div class="container metrics-grid">
-        <div class="metric reveal"><strong>3.2×</strong><span>more interview callbacks</span></div>
-        <div class="metric reveal"><strong>14 days</strong><span>average time to offer</span></div>
-        <div class="metric reveal"><strong>92%</strong><span>ATS pass-through rate</span></div>
-        <div class="metric reveal"><strong>50k+</strong><span>candidates using Wynt</span></div>
-      </div>
-    </section>
-
-    <section class="features" id="features">
+    <section class="trust">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow eyebrow-muted">Why Wynt</span>
-          <h2 class="headline">Everything you need, nothing you don't.</h2>
-          <p class="sub">A focused toolkit that turns job hunting from a guessing game into a clear, guided path.</p>
-        </div>
-
-        <div class="feature-grid">
-          <article class="feature reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-            </div>
-            <h3>Instant CV scoring</h3>
-            <p>Upload once and get a detailed, role-specific score with concrete next steps — not vague advice.</p>
-          </article>
-
-          <article class="feature reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
-            <h3>Real-time feedback</h3>
-            <p>See exactly which lines work, which don't, and how to rewrite them so recruiters actually read you.</p>
-          </article>
-
-          <article class="feature reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <h3>Smart job matches</h3>
-            <p>Wynt learns your strengths and ambitions, then surfaces roles where you'd actually stand out.</p>
-          </article>
-
-          <article class="feature reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
-            </div>
-            <h3>ATS-ready rewrites</h3>
-            <p>One-click rewrites that stay true to your voice — and get past resume filters to a human.</p>
-          </article>
-
-          <article class="feature reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3>Interview coach</h3>
-            <p>Rehearse with an AI recruiter trained on your target company's style — and get honest scorecards.</p>
-          </article>
-
-          <article class="feature reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            </div>
-            <h3>Private by default</h3>
-            <p>Your CV, your data. No selling to third parties. Delete everything with one click, anytime.</p>
-          </article>
+        <p class="trust-label">Candidates hired at</p>
+        <div class="trust-row">
+          <span>Stripe</span><span>Linear</span><span>Figma</span><span>Shopify</span><span>Notion</span><span>Airbnb</span>
         </div>
       </div>
     </section>
 
     <section class="how" id="how">
-      <div class="container how-grid">
+      <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow eyebrow-muted">How it works</span>
-          <h2 class="headline">From CV to offer in three steps.</h2>
-          <p class="sub">Most users finish the full flow in under 10 minutes — then let Wynt work in the background.</p>
+          <h2 class="headline">Three steps between you and your next offer.</h2>
         </div>
 
-        <ol class="steps">
-          <li class="step reveal">
-            <span class="step-num">1</span>
-            <div>
-              <h3>Upload your CV</h3>
-              <p>PDF, DOCX, or paste the text. Wynt parses skills, timelines, and impact automatically.</p>
-            </div>
+        <ol class="steps-row">
+          <li class="step-card reveal">
+            <div class="step-num">1</div>
+            <h3>Upload your resume</h3>
+            <p>Drop in a PDF or DOCX. Wynt parses your experience, skills, and impact — no forms to fill out.</p>
           </li>
-          <li class="step reveal">
-            <span class="step-num">2</span>
-            <div>
-              <h3>Tell us your goal</h3>
-              <p>Pick target roles, locations, and salary. Wynt benchmarks you against thousands of hires.</p>
-            </div>
+          <li class="step-card reveal">
+            <div class="step-num">2</div>
+            <h3>AI reviews and improves it</h3>
+            <p>Get personalized suggestions — clearer phrasing, stronger metrics, ATS fixes — tailored to your target roles.</p>
           </li>
-          <li class="step reveal">
-            <span class="step-num">3</span>
-            <div>
-              <h3>Apply with confidence</h3>
-              <p>Get a tailored CV, cover letter, and a shortlist of roles where you're a top-10% fit.</p>
-            </div>
+          <li class="step-card reveal">
+            <div class="step-num">3</div>
+            <h3>Get matched, fast</h3>
+            <p>We match you with open roles at companies hiring now. You apply with one click, or let recruiters reach out.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="stories" id="stories">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow eyebrow-muted">Stories</span>
-          <h2 class="headline">Candidates who found their fit.</h2>
+    <section class="benefits" id="benefits">
+      <div class="container benefits-grid">
+        <div class="benefits-copy reveal">
+          <span class="eyebrow eyebrow-muted">Why Wynt</span>
+          <h2 class="headline">Built for candidates, not just employers.</h2>
+          <p class="sub">
+            Most job boards dump you into a pile. Wynt is different: our AI reads your resume carefully, shows you what to improve, and only surfaces roles where you have a real shot.
+          </p>
+          <a href="#submit" class="btn btn-primary">Upload my resume</a>
         </div>
 
-        <div class="quote-grid">
-          <figure class="quote reveal">
-            <blockquote>"I'd been applying for months with nothing back. Wynt rewrote two bullet points and I had three callbacks that week."</blockquote>
-            <figcaption>
-              <div class="avatar sm">SM</div>
-              <div><b>Sara M.</b><span>Software Engineer · now at Stripe</span></div>
-            </figcaption>
-          </figure>
-          <figure class="quote reveal">
-            <blockquote>"The ATS score was brutal and fair. I fixed the flagged sections and finally got past screeners at the companies I actually wanted."</blockquote>
-            <figcaption>
-              <div class="avatar sm">DK</div>
-              <div><b>Daniel K.</b><span>Product Manager · now at Linear</span></div>
-            </figcaption>
-          </figure>
-          <figure class="quote reveal">
-            <blockquote>"The interview coach felt like having a friend who used to recruit. I walked in calm and knew what to emphasize."</blockquote>
-            <figcaption>
-              <div class="avatar sm">RP</div>
-              <div><b>Rina P.</b><span>Designer · now at Figma</span></div>
-            </figcaption>
-          </figure>
-        </div>
+        <ul class="benefit-list">
+          <li class="reveal">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Honest AI feedback</h4>
+              <p>Clear, concrete suggestions — not vague advice. See exactly which lines to rewrite.</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>Results in minutes</h4>
+              <p>Your AI review lands in your inbox in under 5 minutes, with matched roles ready to apply to.</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+            </div>
+            <div>
+              <h4>Real matches, not noise</h4>
+              <p>Only roles where you rank in the top candidates — we don't flood you with irrelevant listings.</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <h4>Private by default</h4>
+              <p>Your resume isn't shared with anyone unless you opt in. Delete your data with one click, anytime.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat reveal"><strong>50k+</strong><span>resumes reviewed</span></div>
+        <div class="stat reveal"><strong>3.2×</strong><span>more interview callbacks</span></div>
+        <div class="stat reveal"><strong>14 days</strong><span>average time to offer</span></div>
+        <div class="stat reveal"><strong>92%</strong><span>ATS pass-through rate</span></div>
       </div>
     </section>
 
@@ -297,29 +228,29 @@
         <div class="section-head reveal">
           <span class="eyebrow eyebrow-muted">FAQ</span>
           <h2 class="headline">Questions, answered.</h2>
-          <p class="sub">Still curious? <a href="#">Talk to the team</a>.</p>
+          <p class="sub">Still curious? <a href="mailto:hello@wynt.ai">Email the team</a>.</p>
         </div>
 
         <div class="faq-list">
           <details class="reveal" open>
-            <summary>Is Wynt really free?</summary>
-            <p>Yes — CV scoring and matching are free forever. Premium coaching and unlimited rewrites are available on Wynt Pro.</p>
+            <summary>Is this really free?</summary>
+            <p>Yes. Uploading your resume, getting your AI review, and seeing matched roles is 100% free for candidates.</p>
           </details>
           <details class="reveal">
-            <summary>How private is my data?</summary>
-            <p>Your CV is encrypted at rest, never sold, and never used to train third-party models. You can delete your account anytime.</p>
+            <summary>Who sees my resume?</summary>
+            <p>Only Wynt's AI processes it. Employers only see your profile if you choose to apply or opt into recruiter outreach.</p>
           </details>
           <details class="reveal">
-            <summary>Which file formats are supported?</summary>
-            <p>PDF, DOC, DOCX, and plain text. You can also paste your CV directly into Wynt.</p>
+            <summary>Which file formats can I upload?</summary>
+            <p>PDF, DOC, and DOCX up to 10MB. If your resume is in another format, convert it to PDF first.</p>
           </details>
           <details class="reveal">
-            <summary>Does Wynt work for non-tech roles?</summary>
-            <p>Absolutely. Wynt supports roles across engineering, design, product, marketing, sales, operations, and more.</p>
+            <summary>How long does the review take?</summary>
+            <p>Most reviews land in your inbox in under 5 minutes. Complex resumes may take slightly longer.</p>
           </details>
           <details class="reveal">
-            <summary>Can recruiters find me on Wynt?</summary>
-            <p>Only if you opt in. You control who sees your profile and can switch to private mode anytime.</p>
+            <summary>Can I delete my data?</summary>
+            <p>Yes. One click from your account, or email us at privacy@wynt.ai. We honor deletion requests immediately.</p>
           </details>
         </div>
       </div>
@@ -328,12 +259,9 @@
     <section class="cta">
       <div class="container cta-inner reveal">
         <h2>Your next role is one upload away.</h2>
-        <p>Join 50,000+ candidates who stopped guessing and started landing offers.</p>
-        <div class="cta-buttons">
-          <a href="#upload" class="btn btn-primary btn-lg">Analyze my CV</a>
-          <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
-        </div>
-        <small>No credit card. Free forever plan.</small>
+        <p>Join thousands of candidates who let Wynt's AI handle the hard part.</p>
+        <a href="#submit" class="btn btn-primary btn-lg">Upload my resume</a>
+        <small>Free · No sign-up · Takes under a minute.</small>
       </div>
     </section>
   </main>
@@ -350,16 +278,26 @@
           </span>
           <span class="brand-name">Wynt</span>
         </a>
-        <p class="footer-tag">The AI career companion for people who take their work seriously.</p>
+        <p class="footer-tag">AI that helps candidates get hired and companies find the right fit.</p>
       </div>
 
       <div>
-        <h4>Product</h4>
+        <h4>For candidates</h4>
         <ul>
-          <li><a href="#features">Features</a></li>
+          <li><a href="#submit">Submit resume</a></li>
           <li><a href="#how">How it works</a></li>
+          <li><a href="#benefits">Why Wynt</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>For employers</h4>
+        <ul>
+          <li><a href="https://wynt.ai" target="_blank" rel="noopener">Wynt.ai</a></li>
           <li><a href="#">Pricing</a></li>
-          <li><a href="#">For recruiters</a></li>
+          <li><a href="#">Book a demo</a></li>
+          <li><a href="#">Help center</a></li>
         </ul>
       </div>
 
@@ -367,19 +305,9 @@
         <h4>Company</h4>
         <ul>
           <li><a href="#">About</a></li>
-          <li><a href="#">Careers</a></li>
           <li><a href="#">Blog</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="#">Help center</a></li>
           <li><a href="#">Privacy</a></li>
           <li><a href="#">Terms</a></li>
-          <li><a href="#">Security</a></li>
         </ul>
       </div>
     </div>
@@ -393,8 +321,8 @@
         <a href="#" aria-label="LinkedIn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-.9 1.8-1.9 3.6-1.9 3.9 0 4.5 2.5 4.5 5.8V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
         </a>
-        <a href="#" aria-label="GitHub">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.3.8 1 .8 2v3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+        <a href="#" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
       </div>
     </div>
